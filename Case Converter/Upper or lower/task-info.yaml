@@ -182,8 +182,8 @@ files:
   visible: true
   learner_created: true
 feedback_link: https://hyperskill.org/projects/193/stages/963/implement#comment
-status: Unchecked
+status: Solved
 feedback:
-  message: No tests have run. Try <a href="">installing</a> dependencies.
-  time: Wed, 29 Sep 2021 06:08:49 UTC
-record: -1
+  message: Congratulations!
+  time: Wed, 29 Sep 2021 06:47:52 UTC
+record: 2

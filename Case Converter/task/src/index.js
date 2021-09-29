@@ -48,13 +48,25 @@ function setBtnClickListener(txtArea, btn, fun) {
         txtArea.value = txt;
     });
 }
+function downloadTxt(fileName, text) {
+    var link = document.createElement("a");
+    link.setAttribute("href", "data:text/plain;charset=utf-8," + encodeURIComponent(text));
+    link.setAttribute("download", fileName);
+    link.style.display = "none";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+}
 var txtArea = document.querySelector("#input");
 var upperCaseBtn = document.querySelector("#upper-case");
 var lowerCaseBtn = document.querySelector("#lower-case");
 var properCaseBtn = document.querySelector("#proper-case");
 var sentenceCaseBtn = document.querySelector("#sentence-case");
-//txtArea.innerHTML = "oy";
+var saveTextBtn = document.querySelector("#save-text-file");
 setBtnClickListener(txtArea, upperCaseBtn, toUpperCase);
 setBtnClickListener(txtArea, lowerCaseBtn, toLowerCase);
 setBtnClickListener(txtArea, properCaseBtn, toProperCase);
 setBtnClickListener(txtArea, sentenceCaseBtn, toSentenceCase);
+saveTextBtn.addEventListener("click", function () {
+    downloadTxt("text.txt", txtArea.value);
+});

@@ -58,13 +58,31 @@ function setBtnClickListener(
     });
 }
 
+
+function downloadTxt(fileName: string, text: string) {
+    const link: HTMLAnchorElement = document.createElement("a");
+    link.setAttribute("href", "data:text/plain;charset=utf-8," + encodeURIComponent(text));
+    link.setAttribute("download", fileName);
+    link.style.display = "none";
+
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+}
+
+
 const txtArea: HTMLTextAreaElement = document.querySelector("#input")!;
 const upperCaseBtn: HTMLButtonElement = document.querySelector("#upper-case")!
 const lowerCaseBtn: HTMLButtonElement = document.querySelector("#lower-case")!
 const properCaseBtn: HTMLButtonElement = document.querySelector("#proper-case")!
 const sentenceCaseBtn: HTMLButtonElement = document.querySelector("#sentence-case")!
+const saveTextBtn: HTMLButtonElement = document.querySelector("#save-text-file")!
 
 setBtnClickListener(txtArea, upperCaseBtn, toUpperCase);
 setBtnClickListener(txtArea, lowerCaseBtn, toLowerCase);
 setBtnClickListener(txtArea, properCaseBtn, toProperCase);
 setBtnClickListener(txtArea, sentenceCaseBtn, toSentenceCase);
+
+saveTextBtn.addEventListener("click", () => {
+   downloadTxt("text.txt", txtArea.value);
+});
